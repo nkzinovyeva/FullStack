@@ -20,15 +20,16 @@ server-->browser: HTML-code
 browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
 server-->browser: main.css
 browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
-server-->browser: main.jsbrowser->server: get the list of notes from the page
+server-->browser: main.js
 
 note over browser:
+gets the list of notes from the page
 browser starts executing js-code
 that requests JSON data from server 
 end note
 
 browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
-server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+server-->browser: returns the notes as JSON data
 
 note over browser:
 browser executes the event handler
