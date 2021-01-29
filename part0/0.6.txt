@@ -1,0 +1,10 @@
+title 0.6
+
+Browser->Server: HTTP POST to https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+note right of Browser:
+new note as JSON-data containing both the content of the note (content)
+and the timestamp (date)
+The Content-Type header tels the included data is represented in the JSON format.
+end note
+
+Server->Browser: server responds  with 201 code
