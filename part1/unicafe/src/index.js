@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const Header = (props) => {
+const Header = ({name}) => {
   return (
-    <h1>{props.course}</h1>
+    <h1>{name}</h1>
   )
 }
 
@@ -36,28 +36,31 @@ const Total = ({parts}) => {
 
 
 const App = () => {
-  const course = 'Half Stack application development'
-  const parts = [
-    {
-      name: 'Fundamentals of React',
-      exercises: 10
-    },
-    {
-      name: 'Using props to pass data',
-      exercises: 7
-    },
-    {
-      name: 'State of a component',
-      exercises: 14
-    }
-  ]
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
+
 
 
   return (
     <div>
-      <Header course={course} />
-      <Content parts={parts} />
-      <Total parts={parts} />
+      <Header name={course.name} />
+      <Content parts={course.parts} />
+      <Total parts={course.parts} />
     </div>
   )
 }
@@ -131,4 +134,49 @@ const course = 'Half Stack application development'
       <Total total={part1.exercises + part2.exercises + part3.exercises} />
     </div>
   ) 
+
+//1.4
+const course = 'Half Stack application development'
+  const parts = [
+    {
+      name: 'Fundamentals of React',
+      exercises: 10
+    },
+    {
+      name: 'Using props to pass data',
+      exercises: 7
+    },
+    {
+      name: 'State of a component',
+      exercises: 14
+    }
+  ]
+
+
+  return (
+    <div>
+      <Header course={course} />
+      <Content parts={parts} />
+      <Total parts={parts} />
+    </div>
+  )
+
+  const Content = ({parts}) => {
+  return (
+    <div>
+      <Part parts = {parts[0]}/>
+      <Part parts = {parts[1]}/>
+      <Part parts = {parts[2]}/>
+    </div>
+  )
+}
+
+const Total = ({parts}) => {
+
+  return (
+    <div>
+      <p>Number of exercises is {parts[0].exercises + parts[1].exercises + parts[2].exercises} </p>   
+    </div>
+  )
+}
 */
