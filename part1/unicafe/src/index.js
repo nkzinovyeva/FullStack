@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
-const Display = props => <div>{props.text} {props.value}</div>
+const Statistic = props => <div>{props.text} {props.value}</div>
 
 const Button = (props) => (
   <button onClick={props.handleClick}>
@@ -22,12 +22,12 @@ const Statistics = (props) => {
   return (
     <div>
       <h4>Statistics</h4>
-      <Display value={props.good} text="good"/>
-      <Display value={props.neutral} text="neutral"/>
-      <Display value={props.bad} text="bad"/>
-      <Display value={props.all} text="all"/>
-      <Display value={(props.good - props.bad)/props.all} text="average"/>
-      <Display value={(props.good * 100/props.all) + ' %'} text="positive"/>
+      <Statistic value={props.good} text="good"/>
+      <Statistic value={props.neutral} text="neutral"/>
+      <Statistic value={props.bad} text="bad"/>
+      <Statistic value={props.all} text="all"/>
+      <Statistic value={(props.good - props.bad)/props.all} text="average"/>
+      <Statistic value={(props.good * 100/props.all) + ' %'} text="positive"/>
     </div>
   )
 }
