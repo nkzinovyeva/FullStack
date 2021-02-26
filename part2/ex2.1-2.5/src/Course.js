@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = ({name}) => {
   return (
-    <h1>{name}</h1>
+    <h2>{name}</h2>
   )
 }
 
@@ -33,14 +33,17 @@ const Total = ({parts}) => {
     )
   }
 
-const Course = ({ course }) => {
-
-return (
-    <div>
-      <Header name={course.name} />
-      <Content parts={course.parts} />
-      <Total parts={course.parts} />
-    </div>
-  )
+const Course = ({ courses }) => {
+    return (
+        <div>{courses.map((course) => 
+                <div key={course.id}>
+                    <Header name={course.name} />
+                    <Content parts={course.parts} />
+                    <Total parts={course.parts} />
+                </div>   
+                )}
+        </div>
+    )
 }
+
 export default Course; 
