@@ -51,7 +51,7 @@ const App = () => {
     <div>
       <h1>Web development curriculum</h1>
       <Course courses={courses} />
-  </div>
+    </div>
   )
 }
 
