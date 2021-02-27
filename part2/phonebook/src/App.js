@@ -2,13 +2,15 @@ import React, { useState } from 'react'
 
 const App = () => {
   const [ persons, setPersons ] = useState([
-    { 
-      name: 'Arto Hellas',
-      phone: '1234567' 
-    }
+    { name: 'Arto Hellas', number: '040-123456' },
+    { name: 'Ada Lovelace', number: '39-44-5323523' },
+    { name: 'Dan Abramov', number: '12-43-234345' },
+    { name: 'Mary Poppendieck', number: '39-23-6423122' }
   ]) 
   const [ newName, setNewName ] = useState('')
   const [ newPhone, setNewPhone ] = useState('')
+  const [search, setSearch] = useState('')
+  const [ filteredPersons, setFilteredPersons ] = useState([])
 
   const handlePersonChange = (event) => {
     setNewName(event.target.value)
@@ -18,10 +20,15 @@ const App = () => {
     setNewPhone(event.target.value)
   }
 
-  const addPerson = (event) => {
-    
+  const handleSearch = (event) => {
     event.preventDefault()
-    
+    setSearch(event.target.value)
+    let filteredPersons = persons.filter(person => person.name.toLowerCase().includes(search));
+    setFilteredPersons(filteredPersons);
+  }
+
+  const addPerson = (event) => {
+    event.preventDefault()
     const allPersons = persons.map((person) => person.name)
     if (allPersons.includes(newName)) {
       alert(`${newName} is already added to phonebook`)	
@@ -41,6 +48,13 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <div>
+        search for: <input
+        value={search}
+        onChange={handleSearch}
+        /> 
+      </div>
+      <h4>add a new</h4>
       <form onSubmit={addPerson}>
         <div>
           name: <input
@@ -58,9 +72,12 @@ const App = () => {
           <button type="submit">add</button>
         </div>
       </form>
-      <h2>Numbers</h2>
+      <h4>Numbers</h4>
       <ul>
-        {persons.map((person, i) => 
+        {filteredPersons && filteredPersons.length > 0 
+        ? filteredPersons.map((person, i) => 
+        <li key={i}>{person.name}, {person.phone}</li>)
+        : persons.map((person, i) => 
           <li key={i}>{person.name}, {person.phone}</li>
         )}
       </ul>
